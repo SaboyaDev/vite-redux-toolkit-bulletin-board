@@ -14,7 +14,7 @@ const AddPostForm = () => {
 	const userOptions = users.map(user => (
 		<option
 			key={user.id}
-			value='user.id'
+			value={user.id}
 		>
 			{user.name}
 		</option>
@@ -48,7 +48,6 @@ const AddPostForm = () => {
 				/>
 				<label htmlFor='postAuthor'>Author:</label>
 				<select
-					name='postAuthor'
 					id='postAuthor'
 					value={userId}
 					onChange={onAuthorChanged}

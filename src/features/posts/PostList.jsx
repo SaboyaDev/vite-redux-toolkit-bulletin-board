@@ -6,8 +6,9 @@ const PostList = () => {
 	const posts = useSelector(selectAllPosts)
 
 	const renderedPosts = posts.map(post => {
+		console.log(post)
 		const { id, title, content, userId } = post
-
+		console.log(userId)
 		return (
 			<article key={id}>
 				<h3>{title}</h3>

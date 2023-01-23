@@ -27,7 +27,7 @@ const AddPostForm = () => {
 	const handleSubmit = e => {
 		e.preventDefault()
 		if (title && content) {
-			dispatch(postAdded(title, content, userId))
+			dispatch(postAdded({ title, content, userId }))
 			setTitle('')
 			setContent('')
 			setUserId('')

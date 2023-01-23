@@ -12,7 +12,8 @@ const PostList = () => {
 		return (
 			<article key={id}>
 				<h3>{title}</h3>
-				<p>{content.substring(0, 100)}</p>
+				{/* <p>{content.substring(0, 100)}</p> */}
+				<p>{content}</p>
 				<p className='postCredit'>
 					<PostAuthor userId={userId} />
 				</p>

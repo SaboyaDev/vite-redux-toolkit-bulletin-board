@@ -7,8 +7,8 @@ const AddPostForm = () => {
 	const dispatch = useDispatch()
 
 	const [title, setTitle] = useState('')
-	const [content, setContent] = useState('')
 	const [userId, setUserId] = useState('')
+	const [content, setContent] = useState('')
 
 	const users = useSelector(selectAllUsers)
 	const userOptions = users.map(user => (
@@ -34,6 +34,8 @@ const AddPostForm = () => {
 		}
 	}
 
+	const canSave = Boolean(title) && Boolean(content)
+
 	return (
 		<section>
 			<h2>Add a New Post</h2>
@@ -56,14 +58,19 @@ const AddPostForm = () => {
 					{userOptions}
 				</select>
 				<label htmlFor='postContent'>Content:</label>
-				<input
+				<textarea
 					type='text'
 					id='postContent'
 					name='postContent'
 					value={content}
 					onChange={onContentChanged}
 				/>
-				<button type='submit'>Save Post</button>
+				<button
+					type='submit'
+					disabled={!canSave}
+				>
+					Save Post
+				</button>
 			</form>
 		</section>
 	)

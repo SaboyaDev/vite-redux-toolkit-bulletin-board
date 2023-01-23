@@ -1,21 +1,25 @@
 import { useSelector } from 'react-redux'
 import { selectAllPosts } from './postsSlice'
 import PostAuthor from './PostAuthor'
+import TimeAgo from './TimeAgo'
 
 const PostList = () => {
 	const posts = useSelector(selectAllPosts)
+	const orderedPosts = posts
+		.slice()
+		.sort((a, b) => b.date.localeCompare(a.date))
 
-	const renderedPosts = posts.map(post => {
+	const renderedPosts = orderedPosts.map(post => {
 		console.log(post)
-		const { id, title, content, userId } = post
+		const { id, title, content, userId, date } = post
 		console.log(userId)
 		return (
 			<article key={id}>
 				<h3>{title}</h3>
-				{/* <p>{content.substring(0, 100)}</p> */}
-				<p>{content}</p>
+				<p>{content.substring(0, 1000)}</p>
 				<p className='postCredit'>
 					<PostAuthor userId={userId} />
+					<TimeAgo timestamp={date} />
 				</p>
 			</article>
 		)
